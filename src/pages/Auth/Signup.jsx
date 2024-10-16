@@ -4,12 +4,13 @@ import "./Signup.css";
 import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import axios from "axios";
-import { baseURL } from "../../Api/Api";
-import { register } from "../../Api/Api";
 import logo from "../../assets/Logo0.svg"
-
-
+import { useNavigate } from 'react-router-dom';
+import Cookies from "universal-cookie";
 export default function Signup() {
+    const navigate = useNavigate();
+    const cookie = new Cookies();
+
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedMonth, setSelectedMonth] = useState(null);
     const [selectedYear, setSelectedYear] = useState(null);
@@ -22,10 +23,21 @@ export default function Signup() {
         dateOfBirthOfMam: '',
     });
     const [error, setErrors] = useState({})
-    const [errorpost,seterrorpost]=useState({})
+    const [errorpost, seterrorpost] = useState({})
+    const [loading, setLoading] = useState(false);
 
+
+    useEffect(() => {
+        const storedForm = JSON.parse(sessionStorage.getItem('signupForm'));
+        if (storedForm) {
+            setform(storedForm);
+        }
+    }, []);
+ 
     function handlechange(e) {
-        setform({ ...form, [e.target.name]: e.target.value });
+        const newForm = { ...form, [e.target.name]: e.target.value };
+        setform(newForm);
+        sessionStorage.setItem('signupForm', JSON.stringify(newForm)); 
     }
     useEffect(() => {
         if (selectedDay && selectedMonth && selectedYear) {
@@ -36,9 +48,8 @@ export default function Signup() {
             setform(prevForm => ({ ...prevForm, dateOfBirthOfMam: formattedDate }));
         }
     }, [selectedDay, selectedMonth, selectedYear]);
-    
 
-  
+    
     function validateForm() {
         const errors = {};
         
@@ -95,45 +106,41 @@ export default function Signup() {
         return errors;
     }
     
-
-
-    /// handle Submit()
-    async function handlesubmit(e){
+    async function handlesubmit(e) {
         e.preventDefault();
-        const errorsafter = validateForm(); // هي هنا هترجعي الايرور بقي في اوجيت وتحتهم في النيو اوبجيت
+        const errorsafter = validateForm(); 
         if (Object.keys(errorsafter).length > 0) {
             setErrors(errorsafter);
             return; 
         }
-        console.log(error)
-
+        setLoading(true); 
+    
         try {
-            let res = await axios.post(`${baseURL}/${register}`, form);
-            console.log(res);
+            let res = await axios.post(`https://carenest-serverside.vercel.app/auth/signup`, form);
             
-          
-           
-        } 
-       
-        catch (error) {
-            console.log(error)
-errorpost.error=" Oops something wrong please try again"
-            if (error.status === 400 || error.status === 422) {
-               setErrors({"Email":"The Email Is Already taken"}) 
+            console.log(res.data.token)
+            const token=res.data.token
+            cookie.set("Bearer",token )
+            if (res.status === 200) {
+                setLoading(false); 
+                navigate('/Auth/Confirmemail');
             }
-            
-           
-
+        } catch (error) {
+            setLoading(false); 
+            console.log(error); 
+            if (error.response && error.response.status === 400) {
+                setErrors({ "Email": "The Email is already taken" });
+            } else {
+                seterrorpost({ error: "Oops something went wrong, please try again" });
+            }
         }
     }
-    console.log(form);
-    console.log(error)
+    
 
 
 
     return (
-        <div className="container-form">
-        <div className="Signup">
+     
             <div className="form-inputs">
                 <div className="logo">
                     <img src={logo} alt="img" />
@@ -223,7 +230,7 @@ errorpost.error=" Oops something wrong please try again"
                                     placeholderText="DD"
                                     isClearable
                                     showPopperArrow={false}
-                                    popperPlacement="bottom"
+                                    popperPlacement="top"
                                     customInput={<input className="custom-date-input" />}
                                 />
                             </div>
@@ -246,7 +253,8 @@ errorpost.error=" Oops something wrong please try again"
                                     dateFormat="yyyy"
                                     placeholderText="YYYY"
                                     showYearPicker
-                                    isClearable
+                                isClearable
+                                popperPlacement="top"
                                     minDate={new Date(1973, 0, 1)}
                                     maxDate={new Date()}
                                     scrollableYearDropdown
@@ -258,22 +266,26 @@ errorpost.error=" Oops something wrong please try again"
                         {error.dateOfBirthOfMam && <p className="error">{error.dateOfBirthOfMam}</p>}
                     </div>
 
-                    <label className="submit">
-                        <input type="submit" className="submit" value="Sign up" />
-                    </label>
+                <label className="submit">
+    <button 
+        type="submit" 
+        className="submit" 
+        disabled={loading}
+                    >
+      {loading ?  <div className="spinner-small"></div> : "Sign up"}
+                    </button>
+
+</label>
                     <p className="options">
                         Already have an account?
                         <Link to="/login"> log in</Link>
                         </p>
                         {errorpost.error && <p className="error">{errorpost.error}</p>}
-                </form>
+            </form>
+        
             </div>
 
-                <div className="Img-Auth">
-                   
-                </div>
-                </div>
-        </div>
+  
     );
 }
 
