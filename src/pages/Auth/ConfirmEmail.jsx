@@ -9,6 +9,7 @@ import Cookies from "universal-cookie";
 import { FaArrowLeft } from "react-icons/fa";
 import "./Confirm.css"
 
+
 export default function ConfirmEmail() {
     const cookie = new Cookies();
     const nav = useNavigate('');
@@ -23,6 +24,7 @@ export default function ConfirmEmail() {
         fifth: "",
         sixth: ""
     });
+    const [emaildone,setemaildone]=useState(false)
 
     useEffect(() => {
         document.getElementsByName("first")[0].focus();
@@ -61,13 +63,17 @@ export default function ConfirmEmail() {
             });
         
             if (res.status === 201) {
-                nav("/"); 
+                setemaildone(true);
                 setLoading(false);
-                document.querySelectorAll('input').forEach(input => input.classList.add('scale-input'));
+                document.querySelectorAll('.flex input').forEach(input => input.classList.add('scale-input'));
+                setTimeout(() => {
+                    nav("/"); 
+                }, 2000); 
             } else {
                 setLoading(false);
                 setError("Please enter the correct code.");
             }
+            
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
             setLoading(false);
@@ -148,6 +154,7 @@ export default function ConfirmEmail() {
                     />
                 </div>
                 {error && <div style={{ color: "red" }}>{error}</div>} 
+                {emaildone && <p className="sucsses" style={{color:"green"}}> Your account has been successfully created</p>}
                 <div className="options-action">
                     <button type="button" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                         <FaArrowLeft className="icon" />

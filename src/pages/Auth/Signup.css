@@ -13,6 +13,7 @@
     /* height: 100vh; */
     margin: -20px 0 50px;
     margin-top: 20px;
+    position: relative;
 }
  * {
     box-sizing: border-box;
@@ -67,12 +68,13 @@ ul {
 }
  
   .container-form{
-    height: 100vh;
-    display: flex;
+    padding-top: 25px;
+    /*height: 100vh;
+    */display: flex;
     justify-content: center;
     align-items: center;
-   
- } 
+
+} 
  
  .Signup{
    
@@ -257,7 +259,7 @@ form  .email input ,
     color: rgba(10, 106, 166, 1);
     font-weight: 400;
     font-size: 20px;
-margin: 5px 0 15px;
+margin: 5px 0 20px;
   }
   .options a{
     color:  rgba(220, 90, 176, 1);;
@@ -291,6 +293,7 @@ border-bottom-right-radius: 20px;
     .container-form{
         height: 100vh;
    display: block;
+   padding-top: 0 !important;
   
        
      } 

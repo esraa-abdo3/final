@@ -102,21 +102,17 @@
 
 @keyframes spin {
     0% {
-        transform: rotate(0deg)     ;
-        -webkit-transform: rotate(0deg)     ;
-        -moz-transform: rotate(0deg)     ;
-        -ms-transform: rotate(0deg)     ;
-        -o-transform: rotate(0deg)     ;
+        transform: rotate(0deg)   ;
+        -webkit-transform: rotate(0deg)   ;
+        -moz-transform: rotate(0deg)   ;
+        -ms-transform: rotate(0deg)   ;
+        -o-transform: rotate(0deg)   ;
 }
     100% {
         transform: rotate(360deg); 
     }
 }
 .scale-input{
-    transform: 0.3s;
-    transform: scale(1.1);
-    -webkit-transform: 0.3s;
-    -moz-transform: 0.3s;
-    -ms-transform: 0.3s;
-    -o-transform: 0.3s;
+    transform: scale(1.2); 
+    transition: transform 0.3s ease; 
 }

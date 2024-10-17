@@ -7,6 +7,8 @@ import axios from "axios";
 import logo from "../../assets/Logo0.svg"
 import { useNavigate } from 'react-router-dom';
 import Cookies from "universal-cookie";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 export default function Signup() {
     const navigate = useNavigate();
     const cookie = new Cookies();
@@ -25,6 +27,7 @@ export default function Signup() {
     const [error, setErrors] = useState({})
     const [errorpost, seterrorpost] = useState({})
     const [loading, setLoading] = useState(false);
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
 
     useEffect(() => {
@@ -128,14 +131,16 @@ export default function Signup() {
         } catch (error) {
             setLoading(false); 
             console.log(error); 
-            if (error.response && error.response.status === 400) {
+            if (error.response.status === 400) {
                 setErrors({ "Email": "The Email is already taken" });
             } else {
                 seterrorpost({ error: "Oops something went wrong, please try again" });
             }
         }
     }
-    
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
+    }
 
 
 
@@ -176,7 +181,7 @@ export default function Signup() {
                             name="lastName"
                             onChange={handlechange}
                                 />
-                                  {error.lastName && <p className="error">{error.lastName}</p>}
+                                  {error.lastName && <p style={{paddingBottom:"10px"}} className="error">{error.lastName}</p>}
                                   </div>
                         
                       
@@ -196,26 +201,59 @@ export default function Signup() {
                         />
                             {error.Email && <p className="error">{error.Email}</p>}
                     </label>
+                <label className="password" style={{ position: 'relative' }}>
+  <input
+    type={passwordVisible ? "text" : "password"}
+    placeholder="Password"
+    value={form.password}
+    name="password"
+    onChange={handlechange}
+    style={{
+      paddingRight: '30px' 
+    }}
+  />
+  <span
+    onClick={togglePasswordVisibility}
+    style={{
+      position: 'absolute',
+      right: '30px', 
+      top: '50%',
+      transform: 'translateY(-50%)',
+      cursor: 'pointer',
+      color: '#777'
+    }}
+  >
+    {passwordVisible ? <FaEye /> : <FaEyeSlash />}
+  </span>
+  {error.password && <p className="error">{error.password}</p>}
+</label>
 
-                    <label className="password">
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={form.password}
-                            name="password"
-                            onChange={handlechange}
-                        />
-                             {error.password && <p className="error">{error.password}</p>}
-                    </label>
+   
 
-                    <label className="confirm-password">
+                    <label className="confirm-password" style={{ position: 'relative' }}>
                         <input
-                            type="password"
+                           type={passwordVisible ? "text" : "password"}
                             placeholder="Confirm Password"
                             value={form.passwordConfirm}
                             name="passwordConfirm"
-                            onChange={handlechange}
-                        />
+                        onChange={handlechange}
+                        style={{
+                            paddingRight: '30px' 
+                          }}
+                    />
+                      <span
+    onClick={togglePasswordVisibility}
+    style={{
+      position: 'absolute',
+      right: '30px', 
+      top: '50%',
+      transform: 'translateY(-50%)',
+      cursor: 'pointer',
+      color: '#777'
+    }}
+  >
+    {passwordVisible ? <FaEye  /> : <FaEyeSlash />}
+  </span>
                           {error.passwordConfirm && <p className="error">{error.passwordConfirm}</p>}
                     </label>
 
