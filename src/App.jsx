@@ -24,7 +24,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Signup from './pages/Auth/Signup'
 import Auth from './pages/Auth/Auth'
-import Home from './pages/otherpages/Home'
+import Home from './pages/Home/Home'
 import ConfirmEmail from './pages/Auth/ConfirmEmail'
 import Login from './pages/Auth/Login/Login'
 import ForgetPass from './pages/Auth/ForgetPassword/ForgetPass'
@@ -35,7 +35,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home/>} />
         <Route path='/Auth' element={<Auth />}>
           <Route path='Signup' element={<Signup />} />
           <Route path='Confirmemail' element={<ConfirmEmail />} />

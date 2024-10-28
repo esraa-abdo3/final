@@ -21,6 +21,7 @@ export default function Login() {
     const Navigate= useNavigate();
     const cookie = new Cookies();
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [style,setstyle]=useState(false)
 
 
 
@@ -45,6 +46,7 @@ export default function Login() {
     }
     async function handlesubmit(e){
         e.preventDefault();
+        setstyle(true)
         const errorsafter = validateForm(); 
         if (Object.keys(errorsafter).length > 0) {
             setErrors(errorsafter);
@@ -80,7 +82,23 @@ export default function Login() {
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     }
-    
+    const stylebefore = {
+        position: 'absolute',
+      right: '30px', 
+      top: '50%',
+      transform: 'translateY(-50%)',
+      cursor: 'pointer',
+      color: '#777'
+    }
+    const styleafter = {
+        position: 'absolute',
+        right: '30px',
+        top: '30%',
+        transform: 'translateY(-30%)',
+        cursor: 'pointer',
+        color: '#777'
+    }
+
   return (
     <div className=''>
         <div className='login'>
@@ -120,14 +138,7 @@ export default function Login() {
                           />
                             <span
     onClick={togglePasswordVisibility}
-    style={{
-      position: 'absolute',
-      right: '30px', 
-      top: '50%',
-      transform: 'translateY(-50%)',
-      cursor: 'pointer',
-      color: '#777'
-    }}
+    style={ style ? styleafter :stylebefore}
   >
     {passwordVisible ? <FaEye /> : <FaEyeSlash />}
   </span>

@@ -28,6 +28,7 @@ export default function Signup() {
     const [errorpost, seterrorpost] = useState({})
     const [loading, setLoading] = useState(false);
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [style,setstyle]=useState(false)
 
 
     useEffect(() => {
@@ -111,6 +112,7 @@ export default function Signup() {
     
     async function handlesubmit(e) {
         e.preventDefault();
+        setstyle(true)
         const errorsafter = validateForm(); 
         if (Object.keys(errorsafter).length > 0) {
             setErrors(errorsafter);
@@ -140,6 +142,22 @@ export default function Signup() {
     }
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
+    }
+    const stylebefore = {
+        position: 'absolute',
+      right: '30px', 
+      top: '50%',
+      transform: 'translateY(-50%)',
+      cursor: 'pointer',
+      color: '#777'
+    }
+    const styleafter = {
+        position: 'absolute',
+        right: '30px',
+        top: '30%',
+        transform: 'translateY(-30%)',
+        cursor: 'pointer',
+        color: '#777'
     }
 
 
@@ -214,14 +232,7 @@ export default function Signup() {
   />
   <span
     onClick={togglePasswordVisibility}
-    style={{
-      position: 'absolute',
-      right: '30px', 
-      top: '50%',
-      transform: 'translateY(-50%)',
-      cursor: 'pointer',
-      color: '#777'
-    }}
+    style={ style ? styleafter :stylebefore}
   >
     {passwordVisible ? <FaEye /> : <FaEyeSlash />}
   </span>
@@ -243,14 +254,15 @@ export default function Signup() {
                     />
                       <span
     onClick={togglePasswordVisibility}
-    style={{
-      position: 'absolute',
-      right: '30px', 
-      top: '50%',
-      transform: 'translateY(-50%)',
-      cursor: 'pointer',
-      color: '#777'
-    }}
+    // style={{
+    //   position: 'absolute',
+    //   right: '30px', 
+    //   top: '60%',
+    //   transform: 'translateY(-60%)',
+    //   cursor: 'pointer',
+    //   color: '#777'
+    // }}
+    style={ style ? styleafter :stylebefore}
   >
     {passwordVisible ? <FaEye  /> : <FaEyeSlash />}
   </span>
