@@ -89,7 +89,7 @@ export default function Navbar() {
           
            
                 <div className="cont">
-                    <div className="all" style={{display:"flex " ,flexDirection :"column" ,justifyContent :"space-between" , height:"70%" ,maxwidth:"100%"}}>
+                    <div className="all" style={{display:"flex " ,flexDirection :"column" ,justifyContent :"space-between" , height:"100%" ,maxwidth:"100%"}}>
                         <div style={{display:"flex" ,flexDirection:"column" ,gap:"30px"}} >
                         <Link to="/" onClick={toggleSidebar}>Home</Link>
             <Link to="/" onClick={toggleSidebar}>Cry Guide</Link>
