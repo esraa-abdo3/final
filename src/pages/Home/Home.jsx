@@ -3,6 +3,9 @@ import Welcome from "./Welcome"
 import svg from "../../assets/clouds-bottom.svg"
 import Top from "./Topfeaturs"
 import Cry from "./Cryguide"
+import Reminders from "./Reminders"
+import Enterainment from "./Enterainment"
+import Growth from "./Growth"
 export default function Home() {
     return (
         <>
@@ -14,6 +17,9 @@ export default function Home() {
             </img>
           
             <Cry />
+            <Reminders />
+            <Enterainment />
+            <Growth />
            
         
         </>
