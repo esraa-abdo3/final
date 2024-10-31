@@ -70,6 +70,7 @@ import discomfrotimg from "../../assets/8.png"
 import Bupring from "../../assets/1.png"
 import b from "../../assets/9.png"
 import "./Top.css";
+import foot from "../../assets/foot.png"
 
 
 export default function Cry() { 
@@ -99,6 +100,7 @@ export default function Cry() {
 
     return (
         <div className={`cry ${isVisible ? 'active' : ''}`} ref={sectionRef}>
+            
             <h2>Listen to your baby's cries, and let us help you understand the reason!</h2>
             <div className="cont">
                 <div className="img">
@@ -106,9 +108,10 @@ export default function Cry() {
                     <div className="cloudes-animation">
                         <img src={cloudes} alt="Clouds Animation" />
                     </div>
+                 
                 </div>
                 <div className="cryes-options">
-                    <div style={{ display: "flex", gap: "15px" }}>
+                    <div style={{ display: "flex", gap: "40px" }}>
                         <div className="type">
                             <div style={{display:"flex" , alignItems:"center" ,gap:"10px"}}>
                                 <img src={hungryimg} style={{maxWidth:"40px"}}>
@@ -127,8 +130,20 @@ export default function Cry() {
                             
                             <p>When babies are tired, they cry to show they need sleep.</p>
                         </div>
+                        
                     </div>
-                    <div style={{ display: "flex", gap: "15px" }}>
+                    <div className="type">
+                        <div style={{ display: "flex", alignItems:"center", gap: "15px" }}>
+                            <img src={ b} style={{ maxWidth:"40px"}}>
+                          
+                            </img>
+                            
+                            <h3>Burping</h3>
+                    </div>
+                    
+                        <p>If babies need to burp, they might cry due to trapped air.</p>
+                    </div>
+                    <div style={{ display: "flex", gap: "40px" }}>
                         <div className="type">
                             <div style={{ display: "flex", gap: "15px", alignItems:"center" }}>
                                 <img src={discomfrotimg} alt="" style={{maxWidth:"40px"}} />
@@ -149,19 +164,10 @@ export default function Cry() {
                             <p>Gas or colic can make babies cry from stomach pain.</p>
                         </div>
                     </div>
-                    <div className="type">
-                        <div style={{ display: "flex", alignItems:"center", gap: "15px" }}>
-                            <img src={ b} style={{ maxWidth:"40px"}}>
-                          
-                            </img>
-                            
-                            <h3>Burping</h3>
-                    </div>
-                    
-                        <p>If babies need to burp, they might cry due to trapped air.</p>
-                    </div>
+                  
                 </div>
             </div>
+            <img src={foot} alt="" className='foot' />
         </div>
     );
 }

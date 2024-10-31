@@ -65,7 +65,7 @@ export default function Navbar() {
         <div className="Navbar">
             <div className="cont">
             <nav>
-                           <FaBars style={{fontSize:"25px"}} className="menu-icon" onClick={toggleSidebar} />
+                           <FaBars style={{fontSize:"25px" , color:"black"}} className="menu-icon" onClick={toggleSidebar} />
                 <div className="logo">
                     <img src={logo} alt="logo" />
                 </div>
