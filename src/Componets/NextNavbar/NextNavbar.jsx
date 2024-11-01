@@ -47,7 +47,10 @@ export default function NextNavbar({ toggleSidebar }) {
             <Link to="/mamy-tips" onClick={toggleSidebar}>Mamy Tips</Link>
             <Link to="/doctors" onClick={toggleSidebar}>Doctors</Link>
             <Link to="/shopping" onClick={toggleSidebar}>Shopping</Link>
-            <Link to="/entertainment" onClick={toggleSidebar}>Entertainment</Link>
+                <Link to="/entertainment" onClick={toggleSidebar}>Entertainment</Link>
+                <Link to="/entertainment" onClick={toggleSidebar}>Community</Link>
+                
+                
         </div>
         </div>
       

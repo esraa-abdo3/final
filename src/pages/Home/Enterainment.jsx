@@ -19,7 +19,7 @@ export default function Enterainment() {
                     </div>
                     <div className="column">
                  
-                        <img src={t1}>
+                        <img src={t1} className="t">
                         </img>
                         <img src={ballon} alt=""  className="bullon" />
                     </div>

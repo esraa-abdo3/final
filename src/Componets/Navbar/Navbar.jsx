@@ -71,10 +71,10 @@ export default function Navbar() {
                 </div>
                 <div className="Navbar-btn">
                     <button className="loging">
-                        <Link to="login">Log in</Link>
+                        <Link to="Auth/login">Log in</Link>
                     </button>
                     <button className="signup active">
-                        <Link to="Signup">sign up</Link>
+                        <Link to="Auth/Signup">sign up</Link>
                     </button>
              
 

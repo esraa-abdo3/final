@@ -5,8 +5,8 @@ import "./Top.css";
 import one from "../../assets/second_vectors-removebg-preview.png";
 import two from "../../assets/one_vectors-removebg-preview.png";
 import three from "../../assets/thirds_vectors-removebg-preview.png";
-import aicry from "../../assets/814c07e1-028e-45ae-ad0b-30a0286635d8.jpg";
-import health from "../../assets/c1677ffc-a8d9-485a-89c1-be9e4c6d026c.jpg";
+
+import health from "../../assets/mm.png";
 import shoppinng from "../../assets/Screenshot 2024-10-31 184619.png";
 import micro from "../../assets/3097ebb115dae92cfcbbfd2a7e16e279.jpg";
 

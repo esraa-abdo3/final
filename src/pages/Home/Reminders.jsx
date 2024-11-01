@@ -5,9 +5,9 @@ import reminder2 from '../../assets/reminder img 1.jpeg';
 import heart from '../../assets/Stethoscope.png';
 import alarm from '../../assets/pinkAlarm.png';
 import injection from '../../assets/Injection .png';
-import './Home.css';
+import './Reminders.css';
 
-export default function Home() {
+export default function Reminders() {
     const [visibleVectors, setVisibleVectors] = useState([true, false, false]); 
 
     useEffect(() => {
@@ -52,23 +52,34 @@ export default function Home() {
                     className="vector1" 
                     style={{ opacity: visibleVectors[0] ? 1 : 0, transition: 'opacity 0.9s ease' }} 
                 />
+                <div className="cont">
                 <div>
                     <img src={reminder1} alt="img" className="remImg"/>
                     <h3>Medicine</h3>
                     <p>your children should take his medicines on time. we’ll remind you about your child’s medicine schedule.</p>
-                    <button className="btn-explore">Explore Now</button>
+                    <button className="btn-explore">
+                            <Link to="reminders">
+                            Explore Now
+                            </Link>
+                         
+                        </button>
                     <img 
                         src={injection} 
                         alt="img" 
                         className="vector2" 
                         style={{ opacity: visibleVectors[1] ? 1 : 0, transition: 'opacity 0.9s ease' }} 
                     />
-                </div>
-                <div>
+                    </div>
+                    <div>
                     <img src={reminder2} alt="img" className="remImg" />
                     <h3>Vaccinations</h3>
                     <p>getting all the recommended vaccines on time helps keep your child healthy and safe</p>
-                    <button className="btn-explore">Explore Now</button>
+                        <button className="btn-explore">
+                            <Link to="reminders">
+                            Explore Now
+                            </Link>
+                         
+                        </button>
                     <img 
                         src={heart} 
                         alt="img" 
@@ -76,6 +87,10 @@ export default function Home() {
                         style={{ opacity: visibleVectors[2] ? 1 : 0, transition: 'opacity 0.9s ease' }} 
                     />
                 </div>
+                    
+               </div>
+         
+             
             </div>
         </div>
     );

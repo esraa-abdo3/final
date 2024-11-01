@@ -1,0 +1,55 @@
+
+.cry{
+    padding-bottom: 50px;
+}
+.cry .header{
+    padding-bottom: 30px;
+    text-align: center;
+}
+.cry .header h2{
+    font-size: 38px;
+    font-weight: bold;
+    color: #444157;
+    text-transform: capitalize;
+    padding-bottom: 15px;
+}
+.cry .header p{
+    color: #777;
+}
+.cry .cont{
+    display: grid;
+    grid-template-columns: repeat(auto-fill ,minmax(200px,1fr));
+    justify-content: center;
+   gap: 30px;
+}
+@media(max-width:490px){
+    .cry .cont{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+.cry .cont .box{
+    text-align: center;
+
+    width: 180px;
+    height: 226px;
+}
+.cry .cont .box .text h3{
+    padding-top: 5px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: bolder;
+    color: #444157;
+    text-transform: capitalize;
+
+}
+.cry .cont .box .text p{
+    text-align: center;
+    font-weight: 14px;
+    width: 180px;
+    height: 51px;
+    color: black;
+}

@@ -13,7 +13,7 @@ export default function Welcome() {
           
              
                 <button className="btn-welcome">
-                    <Link to="/Signup"
+                    <Link to="Auth/Signup"
                     >
                     start free
                     </Link>
